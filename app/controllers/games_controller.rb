@@ -15,7 +15,7 @@ class GamesController < ApplicationController
 
   # POST /games
   def create
-    @game = Game.new(game_params)
+    @game = current_user.games.build(game_params)
 
     if @game.save
       render json: @game, status: :created, location: @game
