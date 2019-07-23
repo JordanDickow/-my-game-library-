@@ -4,8 +4,10 @@ curl "http://localhost:4741/games" \
   --header "Content-Type: application/json" \
   --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "example": {
-      "text": "'"${TEXT}"'"
+    "game": {
+      "title": "'"${TITLE}"'",
+      "company": "'"${COMPANY}"'",
+      "year_released": "'"${YEAR_RELEASED}"'"
     }
   }'
 

@@ -1,4 +1,4 @@
-class GamesController < ApplicationController
+class GamesController < OpenReadController
   before_action :set_game, only: [:show, :update, :destroy]
 
   # GET /games
@@ -44,8 +44,8 @@ class GamesController < ApplicationController
       @game = Game.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
-    def game_params
-      params.require(:game).permit(:title, :company, :year_released)
+    #   Only allow a trusted parameter "white list" through.
+  def game_params
+    params.require(:game).permit(:title, :company, :year_released)
     end
 end
