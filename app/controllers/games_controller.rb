@@ -1,5 +1,5 @@
-class GamesController < OpenReadController
-  before_action :set_game, only: [:show, :update, :destroy]
+class GamesController < ProtectedController
+  before_action  :authenticate, :set_game, only: [:show, :update, :destroy]
 
   # GET /games
   def index

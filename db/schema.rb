@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 2019_07_23_122622) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string "title"
-    t.string "company"
-    t.date "year_released"
+    t.string "title", null: false
+    t.string "company", null: false
+    t.date "year_released", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
