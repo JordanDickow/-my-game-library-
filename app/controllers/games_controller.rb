@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class GamesController < ProtectedController
-  before_action  :authenticate, :set_game, only: [:show, :update, :destroy]
+  before_action :set_game, only: [:show, :update, :destroy]
 
   # GET /games
   def index
-    @games = Game.all
+    @games = current_user.games
 
     render json: @games
   end
@@ -39,13 +41,14 @@ class GamesController < ProtectedController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_game
-      @game = Game.find(params[:id])
-    end
 
-    #   Only allow a trusted parameter "white list" through.
+  # Use callbacks to share common setup or constraints between actions.
+  def set_game
+    @game = current_user.games.find(params[:id])
+  end
+
+  #   Only allow a trusted parameter "white list" through.
   def game_params
     params.require(:game).permit(:title, :company, :year_released)
-    end
+end
 end
